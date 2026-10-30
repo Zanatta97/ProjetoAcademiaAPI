@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="src/ProjetoAcademiaAPI.Api/ProjetoAcademiaAPI.Api.csproj" />
+  <Project Path="src/ProjetoAcademiaAPI.Application/ProjetoAcademiaAPI.Application.csproj" />
+  <Project Path="src/ProjetoAcademiaAPI.Domain/ProjetoAcademiaAPI.Domain.csproj" />
+  <Project Path="src/ProjetoAcademiaAPI.Infra/ProjetoAcademiaAPI.Infra.csproj" />
+  <Project Path="tests/ProjetoAcademiaAPI.IntegrationTest/ProjetoAcademiaAPI.IntegrationTest.csproj" />
+  <Project Path="tests/ProjetoAcademiaAPI.UnitTests/ProjetoAcademiaAPI.UnitTests.csproj" />
+</Solution>
