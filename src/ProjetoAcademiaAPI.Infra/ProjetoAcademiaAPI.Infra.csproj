@@ -18,4 +18,13 @@
     <ProjectReference Include="..\ProjetoAcademiaAPI.Domain\ProjetoAcademiaAPI.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Configuration\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="DI\" />
+    <Folder Include="Seed\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
