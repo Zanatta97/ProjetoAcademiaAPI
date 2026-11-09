@@ -15,4 +15,9 @@
     <ProjectReference Include="..\ProjetoAcademiaAPI.Domain\ProjetoAcademiaAPI.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\ApiLog\" />
+    <Folder Include="Common\" />
+  </ItemGroup>
+
 </Project>
