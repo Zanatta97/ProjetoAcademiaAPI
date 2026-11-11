@@ -20,9 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Extensions\" />
-    <Folder Include="Configuration\" />
     <Folder Include="Migrations\" />
-    <Folder Include="DI\" />
     <Folder Include="Seed\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
