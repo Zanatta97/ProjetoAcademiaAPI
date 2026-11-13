@@ -9,6 +9,6 @@ namespace ProjetoAcademiaAPI.Domain.Common
     /// </summary>
     public interface IUserOwned
     {
-        string UserId { get; }
+        Guid UserId { get; }
     }
 }
