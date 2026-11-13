@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ProjetoAcademiaAPI.Application.Interfaces
 {
+    /// <summary>
+    /// Define a interface para o switch(ativar ou desativar) para o log da API.
+    /// </summary>
     public interface IApiLogSwitch
     {
         /// <summary>

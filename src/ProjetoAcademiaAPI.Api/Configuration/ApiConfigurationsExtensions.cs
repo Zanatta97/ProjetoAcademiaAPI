@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using ProjetoAcademiaAPI.Api.Logging;
+using ProjetoAcademiaAPI.Api.Services;
+using ProjetoAcademiaAPI.Application.Interfaces;
 using ProjetoAcademiaAPI.Infra.Context;
 using System.Text.Json.Serialization;
 using System.Threading.RateLimiting;
@@ -26,6 +28,10 @@ namespace ProjetoAcademiaAPI.Api.Configuration
             services.AddApiForwardedHeaders();
             services.AddApiIdentity(configuration);
             services.AddApiRateLimiter();
+            services.AddHttpContextAccessor();
+
+            //Vincula os serviços com as interfaces correspondentes para injeção de dependência
+            services.AddScoped<ICurrentUser, CurrentUserService>();
 
 
             return services;
