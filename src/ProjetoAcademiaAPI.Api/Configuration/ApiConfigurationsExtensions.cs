@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using ProjetoAcademiaAPI.Api.Errors;
 using ProjetoAcademiaAPI.Api.Logging;
 using ProjetoAcademiaAPI.Api.Services;
 using ProjetoAcademiaAPI.Application.Interfaces;
@@ -65,6 +66,8 @@ namespace ProjetoAcademiaAPI.Api.Configuration
             //Adiciona o middleware de tratamento de exceções e personaliza os detalhes do problema para incluir o traceId
             services.AddProblemDetails(options => options.CustomizeProblemDetails = 
                 context => context.ProblemDetails.Extensions["traceId"] = context.HttpContext.GetTraceId());
+
+            services.AddExceptionHandler<GlobalExceptionHandler>();
 
             //Adiciona a documentação da API usando OpenAPI/Swagger
             services.AddOpenApi(options => options.AddDocumentTransformer<BearerSecuritySchemeTransformer>());
