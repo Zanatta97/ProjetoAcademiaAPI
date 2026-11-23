@@ -8,7 +8,7 @@ namespace ProjetoAcademiaAPI.Domain.Entities
     /// <summary>
     /// Entidade para gravação dos logs no banco de dados.
     /// </summary>
-    public class ApiLog : EntityBase
+    public sealed class ApiLog : EntityBase
     {
         public const int MaxTraceIdLength = 1024;
         public const int MaxMethodLength = 128;
