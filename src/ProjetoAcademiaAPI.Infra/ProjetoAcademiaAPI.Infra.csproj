@@ -22,7 +22,6 @@
     <Folder Include="Extensions\" />
     <Folder Include="Migrations\" />
     <Folder Include="Seed\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>

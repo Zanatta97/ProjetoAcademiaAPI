@@ -8,18 +8,18 @@ namespace ProjetoAcademiaAPI.Domain.Entities
 {
     public sealed class Exercise : EntityBase
     {
-        public Guid? UserID { get; private set; }
+        public Guid? UserId { get; private set; }
         public string Name { get; private set; } = null!;
         public MuscleGroup MucleGroup { get; private set; }
         public bool IsArchived { get; private set; }
         public string? Observations { get; private set; } = null;
-        public bool IsGlobal => UserID == null;
+        public bool IsGlobal => UserId == null;
 
         private Exercise() { }
 
         public Exercise(Guid? userId, string name, MuscleGroup muscleGroup, string? observations)
         {
-            UserID = userId;  
+            UserId = userId;  
             Name = name;
             MucleGroup = muscleGroup;
             Observations = observations;

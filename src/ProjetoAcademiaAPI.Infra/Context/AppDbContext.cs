@@ -77,15 +77,17 @@ namespace ProjetoAcademiaAPI.Infra.Context
         {
             // Dados exclusivos do usuário
             builder.Entity<UserProfile>().HasQueryFilter(e => e.UserId == CurrentUserId);
-            /*builder.Entity<Workout>().HasQueryFilter(e => e.UserId == CurrentUserId);
+            builder.Entity<Workout>().HasQueryFilter(e => e.UserId == CurrentUserId);
             builder.Entity<WorkoutExercise>().HasQueryFilter(e => e.UserId == CurrentUserId);
             builder.Entity<PlannedSet>().HasQueryFilter(e => e.UserId == CurrentUserId);
             builder.Entity<WorkoutSession>().HasQueryFilter(e => e.UserId == CurrentUserId);
             builder.Entity<SessionSet>().HasQueryFilter(e => e.UserId == CurrentUserId);
+            builder.Entity<CardioSession>().HasQueryFilter(e => e.UserId == CurrentUserId);
+            builder.Entity<WeightEntry>().HasQueryFilter(e => e.UserId == CurrentUserId);
 
             // Catálogo: exercícios do sistema (UserId nulo) são visíveis para todos,
             // os personalizados só para o dono.
-            builder.Entity<Exercise>().HasQueryFilter(e => e.UserId == null || e.UserId == CurrentUserId);*/
+            builder.Entity<Exercise>().HasQueryFilter(e => e.UserId == null || e.UserId == CurrentUserId);
 
             // ApiLog: sem filtro. O acesso é barrado pela policy AdminOnly.
         }

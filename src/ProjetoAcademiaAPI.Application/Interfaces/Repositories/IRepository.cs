@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoAcademiaAPI.Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
@@ -10,26 +11,30 @@ namespace ProjetoAcademiaAPI.Application.Interfaces.Repositories
     /// os repositories usarem e evitar repetição de código.
     /// </summary>
     /// <typeparam name="T">Entidade mapeada no AppDBContext</typeparam>
-    public interface IRepository<T> where T: class
+    public interface IRepository<T> where T: EntityBase
     {
         /// <summary>
         /// Retorna todos os registros da entidade, sem filtro e sem rastreamento
         /// </summary>
-        public Task<IEnumerable<T>> GetAllAsync();
+        public Task<IEnumerable<T>> GetAllAsync(CancellationToken ct);
+
+
+        //TODO: Implementar paginação
+        //public Task<PagedResponse<T>> GetPagedAsync(PaginationParameters paging, CancellationToken ct);
 
         /// <summary>
-        /// Primeiro registro que atende ao predicado, rastreado pelo EF (use para alterar ou excluir).
+        /// Primeiro registro com o id informado, rastreado pelo EF (use para alterar ou excluir).
         /// </summary>
-        /// <param name="predicate">Predicado para filtrar os registros</param>
+        /// <param name="id">ID do registro a ser buscado</param>
         /// <returns>O registro, ou null se nenhum atender.</returns>
-        public Task<T?> GetByIdAsync(Expression<Func<T, bool>> predicate);
+        public Task<T?> GetByIdAsync(long id, CancellationToken ct);
 
         /// <summary>
-        /// Primeiro registro que atende ao predicado, sem rastreamento (use para leitura apenas).
+        /// Primeiro registro com o id informado, sem rastreamento (use para leitura apenas).
         /// </summary>
-        /// <param name="predicate">Predicado para filtrar os registros</param>
+        /// <param name="id">ID do registro a ser buscado</param>
         /// <returns>O registro, ou null se nenhum atender.</returns>
-        public Task<T?> GetReadOnlyAsync(Expression<Func<T, bool>> predicate);
+        public Task<T?> GetByIdReadOnlyAsync(long id, CancellationToken ct);
 
         /// <summary>Marca a entidade para inclusão.</summary>
         public void Add(T entity);

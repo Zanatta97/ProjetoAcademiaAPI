@@ -22,6 +22,8 @@ namespace ProjetoAcademiaAPI.Domain.Entities
 
         private WorkoutSession() { }
         
+        public IReadOnlyCollection<SessionSet> Sets => _sets;
+
         public static WorkoutSession Register(Guid userId,
                                               Guid clientId,
                                               long workoutId,
@@ -46,10 +48,21 @@ namespace ProjetoAcademiaAPI.Domain.Entities
             };
         }
 
+        /// <summary>
+        /// Adiciona o exercício realizado à sessão de treino, incluindo o exercício e atualiza o volume total se aplicável.
+        /// </summary>
+        /// <remarks>Atualiza o volume total quando o tipo de exercício conta para o volume.</remarks>
+        /// <param name="exerciseId">O identificador do exercício.</param>
+        /// <param name="plannedSetId">O identificador do exercício planejado, se aplicável.</param>
+        /// <param name="setType">O tipo de exercício.</param>
+        /// <param name="weightKg">O peso executado, em quilogramas.</param>
+        /// <param name="reps">O número de repetições concluídas.</param>
+        /// <param name="completedAt">A data e hora em que o exercício foi concluído.</param>
+        /// <returns>Retorna o exercício adicionado.</returns>
         public SessionSet AddSet(long exerciseId, long? plannedSetId, SetType setType,
                                  decimal weightKg, int reps, DateTimeOffset completedAt)
         {
-            var set = new SessionSet(UserId, Id, exerciseId, plannedSetId ?? 0, _sets.Count + 1, weightKg, reps, completedAt);
+            var set = new SessionSet(UserId, Id, exerciseId, plannedSetId ?? 0, _sets.Count + 1, setType, weightKg, reps, completedAt);
 
             _sets.Add(set);
 

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ProjetoAcademiaAPI.Domain.Entities
 {
-    public sealed class WorkoutExcercise : EntityBase, IUserOwned
+    public sealed class WorkoutExercise : EntityBase, IUserOwned
     {
         private readonly List<PlannedSet> _plannedSets = new List<PlannedSet>();
 
@@ -24,10 +24,10 @@ namespace ProjetoAcademiaAPI.Domain.Entities
         public IReadOnlyCollection<PlannedSet> PlannedSets => _plannedSets;
 
         //Cria um construtor privado para impedir a criação de instâncias da classe WorkoutExcercise fora dela.
-        private WorkoutExcercise() { }
+        private WorkoutExercise() { }
 
         //Cria um construtor público que inicializa as propriedades da classe WorkoutExcercise.
-        internal WorkoutExcercise(Guid userId, long workoutId, long exerciseId, int order, int? restSeconds, string? observations)
+        internal WorkoutExercise(Guid userId, long workoutId, long exerciseId, int order, int? restSeconds, string? observations)
         {
             //Valida se o tempo de descanso é negativo, lançando uma exceção se for o caso.
             if (restSeconds is not null && restSeconds < 0)
@@ -63,6 +63,11 @@ namespace ProjetoAcademiaAPI.Domain.Entities
                                             targetRepsMin,
                                             targetRepsMax,
                                             dropTargetReps));
+        }
+
+        internal void SetOrder(int order)
+        {
+            Order = order;
         }
     }
 }
